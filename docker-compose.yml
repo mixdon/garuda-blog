@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: garuda_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: garuda_blog
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_PASSWORD: secret
+      MYSQL_USER: garuda
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  laravel:
+    build:
+      context: ./laravel
+      dockerfile: Dockerfile
+    container_name: garuda_laravel
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      APP_ENV: local
+      APP_KEY: base64:jZyM43WC2D5DCmar0iATQO91eKq4CrICEcIPjUfXIRw=
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: garuda_blog
+      DB_USERNAME: garuda
+      DB_PASSWORD: secret
+      SANCTUM_STATEFUL_DOMAINS: localhost:3000
+      FRONTEND_URL: http://localhost:3000
+      SESSION_DRIVER: cookie
+    depends_on:
+      - db
+    volumes:
+      - ./laravel:/var/www/html
+
+  nextjs:
+    build:
+      context: ./nextjs
+      dockerfile: Dockerfile
+    container_name: garuda_nextjs
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+    depends_on:
+      - laravel
+
+volumes:
+  db_data:
