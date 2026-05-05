@@ -4,8 +4,8 @@ Aplikasi blog sederhana dengan fitur autentikasi dan manajemen post, dibangun me
 
 ## Tech Stack
 
-- **Backend**: Laravel 13 + Laravel Sanctum  
-- **Frontend**: Next.js 16 (App Router) + TailwindCSS + DaisyUI  
+- **Backend**: Laravel 12 + Laravel Sanctum  
+- **Frontend**: Next.js 14 (App Router) + TailwindCSS + DaisyUI  
 - **Database**: MySQL  
 
 ## Struktur Proyek
