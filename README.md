@@ -12,28 +12,34 @@ Aplikasi blog sederhana dengan fitur autentikasi dan manajemen post, dibangun me
 
 ```
 garuda-blog/
-├── laravel/          # Backend REST API
+├── laravel/                        # Backend REST API (Laravel 12)
 │   ├── app/
 │   │   ├── Http/Controllers/Api/
-│   │   │   ├── AuthController.php
-│   │   │   └── PostController.php
+│   │   │   ├── AuthController.php  # Handle register, login, logout
+│   │   │   └── PostController.php  # CRUD post + upload gambar
 │   │   └── Models/
-│   │       ├── User.php
-│   │       └── Post.php
-│   ├── database/migrations/
-│   ├── routes/api.php
-│   └── .env.example
+│   │       ├── Post.php            # Model post dengan relasi ke user
+│   │       └── User.php            # Model user dengan Sanctum token
+│   ├── database/migrations/        # Skema tabel users dan posts
+│   ├── public/storage/posts/       # Folder penyimpanan gambar upload
+│   └── routes/api.php              # Definisi semua route API
 │
-├── nextjs/           # Frontend Next.js
+├── nextjs/                         # Frontend (Next.js 14 App Router)
 │   ├── app/
-│   │   ├── login/page.tsx
-│   │   ├── register/page.tsx
-│   │   ├── posts/page.tsx
-│   │   ├── posts/new/page.tsx
-│   │   ├── posts/[id]/page.tsx
-│   │   └── posts/[id]/edit/page.tsx
-│   ├── lib/api.ts
-│   └── .env.example
+│   │   ├── components/
+│   │   │   ├── Icons.tsx           # Kumpulan SVG icon custom
+│   │   │   └── Navbar.tsx          # Navigasi bar global
+│   │   ├── login/page.tsx          # Halaman login
+│   │   ├── register/page.tsx       # Halaman registrasi
+│   │   ├── posts/
+│   │   │   ├── page.tsx            # Daftar post (search, filter, pagination)
+│   │   │   ├── new/page.tsx        # Form buat post baru
+│   │   │   └── [id]/
+│   │   │       ├── page.tsx        # Detail post
+│   │   │       └── edit/page.tsx   # Form edit post
+│   │   ├── globals.css             # Design system & CSS variables
+│   │   └── layout.tsx              # Root layout aplikasi
+│   └── lib/api.ts                  # Axios instance + interceptor token
 │
 └── README.md
 ```
