@@ -1,3 +1,371 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --brand: #c0392b;
+  --brand-dark: #a93226;
+  --brand-light: #e74c3c;
+  --surface: #ffffff;
+  --surface-muted: #f6f7f8;
+  --border: #edeff1;
+  --border-strong: #d3d5d8;
+  --text-primary: #1c1c1c;
+  --text-secondary: #6b6b6b;
+  --text-muted: #9a9a9a;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--surface-muted);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Topbar Navbar ─── */
+.navbar-garuda {
+  background: var(--brand);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--brand-dark);
+}
+
+/* ─── Layout ─── */
+.page-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 16px;
+  display: flex;
+  gap: 24px;
+}
+
+.page-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.page-sidebar {
+  width: 312px;
+  flex-shrink: 0;
+}
+
+/* ─── Post Cards (feed style) ─── */
+.post-card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-md);
+  display: flex;
+  overflow: hidden;
+  transition: border-color 0.1s ease;
+}
+
+.post-card:hover {
+  border-color: var(--brand);
+}
+
+.post-vote-col {
+  width: 40px;
+  background: var(--surface-muted);
+  border-right: 0.5px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 4px;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.post-body-col {
+  flex: 1;
+  padding: 10px 12px;
+  min-width: 0;
+}
+
+/* ─── Sort bar ─── */
+.sort-bar {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-md);
+  display: flex;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.sort-bar-btn {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--text-secondary);
+  border-right: 0.5px solid var(--border);
+}
+
+.sort-bar-btn:hover {
+  background: var(--surface-muted);
+  color: var(--brand);
+}
+
+.sort-bar-btn.active {
+  background: var(--brand);
+  color: #fff;
+}
+
+/* ─── Sidebar cards ─── */
+.sidebar-widget {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.sidebar-widget-header {
+  background: var(--surface-muted);
+  border-bottom: 0.5px solid var(--border);
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.sidebar-widget-body {
+  padding: 12px;
+}
+
+/* ─── Detail page card ─── */
+.detail-card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.detail-card-header {
+  background: var(--brand);
+  padding: 16px 20px;
+}
+
+.detail-card-body {
+  padding: 20px;
+}
+
+/* ─── Form card ─── */
+.form-card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.form-card-header {
+  background: var(--surface-muted);
+  border-bottom: 0.5px solid var(--border);
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-card-body {
+  padding: 20px;
+}
+
+/* ─── Inputs ─── */
+input,
+textarea {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--brand);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(192, 57, 43, 0.12);
+}
+
+.input {
+  background: var(--surface) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+/* ─── Buttons ─── */
+.btn-brand {
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.btn-brand:hover {
+  background: var(--brand-dark);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 0.5px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 7px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+/* ─── Tags / Badges ─── */
+.tag {
+  display: inline-block;
+  background: #ebf3fb;
+  color: #1a73a7;
+  border: 0.5px solid #c5dff5;
+  border-radius: var(--radius-sm);
+  padding: 2px 8px;
+  font-size: 12px;
+  margin: 2px;
+}
+
+.badge-owner {
+  display: inline-block;
+  background: #fff8e1;
+  color: #8a6914;
+  border: 0.5px solid #ffc107;
+  border-radius: var(--radius-sm);
+  padding: 1px 6px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* ─── Breadcrumb ─── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.breadcrumb a {
+  color: var(--brand);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* ─── Auth pages ─── */
+.auth-bg {
+  background: var(--surface-muted);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-md);
+  width: 100%;
+  max-width: 420px;
+  overflow: hidden;
+}
+
+.auth-card-header {
+  background: var(--brand);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-card-body {
+  padding: 24px;
+}
+
+/* ─── Error alert ─── */
+.alert-error {
+  background: #fdf0f0;
+  color: #9b2335;
+  border: 0.5px solid #f5c6c6;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+/* ─── Divider ─── */
+.divider {
+  border: none;
+  border-top: 0.5px solid var(--border);
+  margin: 16px 0;
+}
+
+/* ─── DaisyUI overrides ─── */
+.btn {
+  border-radius: var(--radius-sm) !important;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: var(--brand) !important;
+  border-color: var(--brand) !important;
+  color: #fff !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-dark) !important;
+  border-color: var(--brand-dark) !important;
+}
+
+.btn-warning {
+  background-color: #f39c12 !important;
+  border-color: #e67e22 !important;
+  color: #fff !important;
+}
+
+.btn-error {
+  background-color: #e74c3c !important;
+  border-color: #c0392b !important;
+  color: #fff !important;
+}
+
+.loading.text-primary {
+  color: var(--brand) !important;
+}
+
+.card {
+  border-radius: var(--radius-md) !important;
+}

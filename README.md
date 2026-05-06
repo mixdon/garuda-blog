@@ -154,14 +154,16 @@ Aplikasi berjalan di: **http://localhost:3000**
 
 ## Fitur
 
-- Register, Login, Logout menggunakan Laravel Sanctum (token-based)  
-- Menampilkan semua post dengan pagination server-side (10 per halaman)  
-- Melihat detail post  
-- Membuat post baru  
-- Mengedit post (hanya pemilik)  
-- Menghapus post (hanya pemilik)  
-- Tombol Edit dan Hapus hanya tampil untuk pemilik post  
-- UI menggunakan DaisyUI  
+- Register, Login, Logout menggunakan Laravel Sanctum (token-based)
+- Menampilkan semua post dengan pagination server-side (10 per halaman)
+- Filter post: semua post atau hanya post milik sendiri
+- Pencarian post berdasarkan judul dan isi artikel
+- Melihat detail post
+- Membuat post baru dengan dukungan upload gambar
+- Mengedit post (hanya pemilik), termasuk ganti atau hapus gambar
+- Menghapus post (hanya pemilik)
+- Tombol Edit dan Hapus hanya tampil untuk pemilik post
+- UI menggunakan TailwindCSS dengan design system custom
 
 ---
 
@@ -173,6 +175,8 @@ Aplikasi berjalan di: **http://localhost:3000**
 - **Axios interceptor** digunakan untuk menyisipkan token Bearer secara otomatis pada setiap request ke API.  
 - **App Router** Next.js digunakan untuk routing berbasis folder.  
 - **DaisyUI** digunakan sebagai komponen UI di atas TailwindCSS.  
+- **Search & Filter** dilakukan di sisi server dengan query parameter `search` dan `mine` pada endpoint `/api/posts`.
+- **Upload gambar** menggunakan Laravel Storage dengan disk `public`, gambar disimpan di folder `posts/`.
 
 ## Docker Compose (Bonus)
 
